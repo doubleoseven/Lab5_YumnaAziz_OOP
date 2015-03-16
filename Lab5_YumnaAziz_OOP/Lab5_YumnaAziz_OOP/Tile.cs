@@ -13,6 +13,7 @@ using Microsoft.Xna.Framework.Media;
 namespace Lab5_YumnaAziz_OOP
 {
     class Tile
+    
     {
         private String type; //Can be Water Land Grass or Rock
         private bool walk = true;
@@ -21,8 +22,10 @@ namespace Lab5_YumnaAziz_OOP
         private Game1 game = new Game1();
         private int height = 60;
         private int width = 60;
+        //var listOfTiles = new List<Texture2D>
+        //String[] tiles = {"water", "land", "grass", "rock"};
 
-        public Tile(String type1, Texture2D tile)
+        public Tile(String type1)
         {
             this.type = type1;
             this.tileImage = tile;
@@ -53,12 +56,14 @@ namespace Lab5_YumnaAziz_OOP
             }
 
         }
+        
 
         public Tile()
         {
             type = null;
             tileImage = null;
         }
+        
         /*
         public override void LoadContent()
         {
