@@ -13,7 +13,8 @@ using Microsoft.Xna.Framework.Media;
 namespace Lab5_YumnaAziz_OOP
 {
     class Tile
-    
+    //Riles array in which to load each image. 
+        //place the images in a tile ob
     {
         private String type; //Can be Water Land Grass or Rock
         private bool walk = true;
@@ -22,37 +23,39 @@ namespace Lab5_YumnaAziz_OOP
         private Game1 game = new Game1();
         private int height = 60;
         private int width = 60;
-        //var listOfTiles = new List<Texture2D>
-        //String[] tiles = {"water", "land", "grass", "rock"};
+       // var listOfTiles = new List<Texture2D>
+       // String[] tiles = new String[4];
+      //  Texture2D[] tiles = new 
+   // {"water", "land", "grass", "rock"};
+        
 
         public Tile(String type1)
         {
             this.type = type1;
-            this.tileImage = tile;
 
             if(type.ToLower() == "water")
             {
                 walk = true;
                 damage = true;
-                tileImage = game.Content.Load<Texture2D>("WaterTile");
+                tileImage = game.Content.Load<Texture2D>("images/WaterTile");
             }
             if(type.ToLower() == "land")
             {
                 walk = true;
                 damage = false;
-                tileImage = game.Content.Load<Texture2D>("SandTile");
+                tileImage = game.Content.Load<Texture2D>("images/SandTile");
             }
             if(type.ToLower() == "grass")
             {
                 walk = true;
                 damage = false;
-                tileImage = game.Content.Load<Texture2D>("GrassTile");
+                tileImage = game.Content.Load<Texture2D>("images/GrassTile");
             }
             if(type.ToLower() == "rock")
             {
                 walk = false;
                 damage = false;
-                tileImage = game.Content.Load<Texture2D>("RockTile");
+                tileImage = game.Content.Load<Texture2D>("images/RockTile");
             }
 
         }

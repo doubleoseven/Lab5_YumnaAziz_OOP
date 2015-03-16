@@ -18,7 +18,20 @@ namespace Lab5_YumnaAziz_OOP
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        
+        Grid gridObject = new Grid();
+        int[,] grid = {
+            {3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
+            {3, 0 ,0, 1, 1, 2, 2, 0, 0, 3},
+            {3, 0, 0, 0, 1, 2, 2, 2, 0, 3},
+            {3, 0, 1, 1, 2, 2, 2, 0, 0, 3},
+            {3, 0, 1, 0, 0, 2, 2, 2, 0, 3},
+            {3, 1, 1, 0, 0, 0, 2, 2, 1, 3},
+            {3, 0, 1, 1, 0, 0, 2, 1, 0, 3},
+            {3, 1, 0, 2, 2, 0, 1, 0, 2, 3},
+            {3, 2, 2, 0, 1, 0, 0, 0, 2, 3},
+            {3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
+            };
+ 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -34,7 +47,32 @@ namespace Lab5_YumnaAziz_OOP
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+          /*   y/x 0 1 2 3 4 5 6 7 8 9  x
+             *   0 3 3 3 3 3 3 3 3 3 3
+             *   1 3 0 0 1 1 2 2 0 0 3
+             *   2 3 0 0 0 1 2 2 2 0 3
+             *   3 3 0 1 1 2 2 2 0 0 3 
+             *   4 3 0 1 0 0 2 2 2 0 3
+             *   5 3 1 1 0 0 0 2 2 1 3
+             *   6 3 0 1 1 0 0 2 1 0 3
+             *   7 3 1 0 2 2 0 1 0 2 3
+             *   8 3 2 2 0 1 0 0 0 2 3
+             *   9 3 3 3 3 3 3 3 3 3 3
+             * 
+             * 
+             * 
+             
+            grid[0, 0] = 3;
+            grid[0, 1] = 3;
+            grid[0, 2] = 3;
+            grid[0, 3] = 3;
+            grid[0, 4] = 3;
+            grid[0, 5] = 3;
+            grid[0, 6] = 3;
+            grid[0, 7] = 3;
+            grid[0, 8] = 3;
+            grid[0, 9] = 3;*/
+           
             base.Initialize();
         }
 
@@ -82,10 +120,23 @@ namespace Lab5_YumnaAziz_OOP
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            Tile[,] tiles = new Tile[10, 10];
+            spriteBatch.Begin();
+            tiles = gridObject.Load(grid); //an array of object tiles
+            //tiles = gridObject.getTileArray();
 
-            // TODO: Add your drawing code here
+            //
+            for (int i = 0; i < 10; i++)
+            {
+                for(int j = 0; j<10; j++)
+                {
+                    spriteBatch.Draw(tiles[i, j].getTile(), new Vector2(60*i, 60*j), Color.White);
+                }
+            }
 
-            base.Draw(gameTime);
+                // TODO: Add your drawing code here
+
+                base.Draw(gameTime);
         }
     }
 }
