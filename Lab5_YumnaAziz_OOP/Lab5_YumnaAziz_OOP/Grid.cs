@@ -19,7 +19,7 @@ namespace Lab5_YumnaAziz_OOP
         public Tile[,] Load(int[,] grid)
         {
             //http://www.dotnetperls.com/2d-array
-            int row = grid.GetUpperBound(0);
+            int row = grid.GetUpperBound(0); //Upper bound = max number of elements starting from 0
             int column = grid.GetUpperBound(1);
 
             tileArray = new Tile[row + 1, column + 1];

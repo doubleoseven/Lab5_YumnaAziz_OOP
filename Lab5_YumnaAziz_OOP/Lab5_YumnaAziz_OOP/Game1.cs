@@ -31,13 +31,14 @@ namespace Lab5_YumnaAziz_OOP
             {3, 2, 2, 0, 1, 0, 0, 0, 2, 3},
             {3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-        Texture2D[] images = new Texture2D[4];
+        Texture2D[] images = new Texture2D[4]; //For tiles
+        Texture2D[] playerImages = new Texture2D[8];
  
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferHeight = 600;
-            graphics.PreferredBackBufferWidth = 800;
+            graphics.PreferredBackBufferWidth = 600;
             Content.RootDirectory = "Content";
         }
 
@@ -128,7 +129,8 @@ namespace Lab5_YumnaAziz_OOP
                     String type = tiles[i, j].getType();
                     if(type == "sand")
                     {
-                        spriteBatch.Draw(images[0], new Vector2(60*i, 60*j), Color.White);
+                        //Where 60 is the width and heigth of the tile
+                        spriteBatch.Draw(images[0], new Vector2(60*i, 60*j), Color.White); 
                     }
 
                     if(type == "grass")
