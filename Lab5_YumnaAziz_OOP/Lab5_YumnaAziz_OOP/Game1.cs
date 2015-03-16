@@ -31,10 +31,13 @@ namespace Lab5_YumnaAziz_OOP
             {3, 2, 2, 0, 1, 0, 0, 0, 2, 3},
             {3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
+        Texture2D[] images = new Texture2D[4];
  
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferHeight = 600;
+            graphics.PreferredBackBufferWidth = 800;
             Content.RootDirectory = "Content";
         }
 
@@ -58,20 +61,7 @@ namespace Lab5_YumnaAziz_OOP
              *   7 3 1 0 2 2 0 1 0 2 3
              *   8 3 2 2 0 1 0 0 0 2 3
              *   9 3 3 3 3 3 3 3 3 3 3
-             * 
-             * 
-             * 
-             
-            grid[0, 0] = 3;
-            grid[0, 1] = 3;
-            grid[0, 2] = 3;
-            grid[0, 3] = 3;
-            grid[0, 4] = 3;
-            grid[0, 5] = 3;
-            grid[0, 6] = 3;
-            grid[0, 7] = 3;
-            grid[0, 8] = 3;
-            grid[0, 9] = 3;*/
+          */
            
             base.Initialize();
         }
@@ -85,6 +75,11 @@ namespace Lab5_YumnaAziz_OOP
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            //Load the tiles in an array
+            images[0] = Content.Load<Texture2D>("images/SandTile");
+            images[1] = Content.Load<Texture2D>("images/GrassTile"); 
+            images[2] = Content.Load<Texture2D>("images/WaterTile");
+            images[3] = Content.Load<Texture2D>("images/RockTile");
             // TODO: use this.Content to load your game content here
         }
 
@@ -128,11 +123,34 @@ namespace Lab5_YumnaAziz_OOP
             //
             for (int i = 0; i < 10; i++)
             {
-                for(int j = 0; j<10; j++)
+                for(int j = 0; j<10; j++) 
                 {
-                    spriteBatch.Draw(tiles[i, j].getTile(), new Vector2(60*i, 60*j), Color.White);
+                    String type = tiles[i, j].getType();
+                    if(type == "sand")
+                    {
+                        spriteBatch.Draw(images[0], new Vector2(60*i, 60*j), Color.White);
+                    }
+
+                    if(type == "grass")
+                    {
+                        spriteBatch.Draw(images[1], new Vector2(60 * i, 60 * j), Color.White);
+                    }
+
+                    if (type == "water")
+                    {
+                        spriteBatch.Draw(images[2], new Vector2(60 * i, 60 * j), Color.White);
+                    }
+
+                    if (type == "rock")
+                    {
+                        spriteBatch.Draw(images[3], new Vector2(60 * i, 60 * j), Color.White);
+                    }
+                    //spriteBatch.Draw(tiles[i, j].getTile(), new Vector2(60*i, 60*j), Color.White);
                 }
             }
+
+            spriteBatch.End();
+
 
                 // TODO: Add your drawing code here
 
