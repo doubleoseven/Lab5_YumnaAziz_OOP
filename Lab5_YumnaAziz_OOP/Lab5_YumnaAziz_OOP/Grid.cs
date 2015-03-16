@@ -8,10 +8,14 @@ namespace Lab5_YumnaAziz_OOP
     class Grid
     {
         Tile[,] tile;
-        int[,] tiles = new int[10, 10];
+        //int[,] tiles = new int[10, 10];
         int width = 60;
         int height = 60;
         Game1 game = new Game1();
+        
+        //Is given an array of integers that specify which tile is which
+        //Read each row, column and specify whether what the type is
+        //Depedning on the type, create an array of tile objects 
 
         public void Load(int[,] grid)
         {
@@ -28,7 +32,7 @@ namespace Lab5_YumnaAziz_OOP
                     if(grid[i, j] == 0)
                     {
                         //Load the sand tile in the tile array 
-                       // tile[i, j] = 
+                       // tile[i, j] = new Tile(")
                     }
                     
                     if(grid[i, j] == 1)
