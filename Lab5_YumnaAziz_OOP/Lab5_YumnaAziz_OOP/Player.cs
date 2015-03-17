@@ -9,14 +9,14 @@ namespace Lab5_YumnaAziz_OOP
     {
         private int row;
         private int column;
-        String direction; //playerPicUp1, playerPicUp2, playerPicDown1, playerPicDown2,
+        int direction; //playerPicUp1, playerPicUp2, playerPicDown1, playerPicDown2,
                             //playerPicLeft1, playerPicLeft2, playerPicRight1, playerPicRight2 
 
         public Player(int x, int y)
     {
         row = x;
         column = y;
-        direction = "up1";
+        direction = 1;
     }
 
 
@@ -40,19 +40,18 @@ namespace Lab5_YumnaAziz_OOP
             column = y;
         }
 
-        public String getPlayerDirection()
+        public int getPlayerDirection()
         {
             return direction;
         }
         
-        public void setPlayerDirection(String d)
+        public void setPlayerDirection(int d)
         {
             direction = d;
         }
 
-        public bool canMove(int row, int column)
+        public bool canMove(Grid grid, int row, int column)
         {
-            Grid grid = new Grid();
             Tile tile = grid.getTile(row, column);
 
             if (tile.canWalk()) return true;
