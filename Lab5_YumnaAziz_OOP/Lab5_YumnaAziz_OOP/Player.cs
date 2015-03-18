@@ -9,14 +9,13 @@ namespace Lab5_YumnaAziz_OOP
     {
         private int row;
         private int column;
-        int direction; //playerPicUp1, playerPicUp2, playerPicDown1, playerPicDown2,
-                            //playerPicLeft1, playerPicLeft2, playerPicRight1, playerPicRight2 
+        String direction; //up, down, left, right 
 
             public Player(int x, int y)
         {
             row = x;
             column = y;
-            direction = 1;
+            direction = "up";
         }
 
 
@@ -40,12 +39,12 @@ namespace Lab5_YumnaAziz_OOP
             column = y;
         }
 
-        public int getPlayerDirection()
+        public String getPlayerDirection()
         {
             return direction;
         }
         
-        public void setPlayerDirection(int d)
+        public void setPlayerDirection(String d)
         {
             direction = d;
         }
