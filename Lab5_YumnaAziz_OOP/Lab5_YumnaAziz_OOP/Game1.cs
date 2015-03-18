@@ -121,20 +121,38 @@ namespace Lab5_YumnaAziz_OOP
             
             if(keyboard.IsKeyDown(Keys.Up))
             {
-                playerPosition.Y =-1;
+                    playerPosition.Y = playerPosition.Y - 1;
+                    if (playerPosition.Y < (player.getPlayerX() * 60))
+                    {
+                        player.setPlayerX(player.getPlayerX() - 1);
+                    }
             }
             
             if(keyboard.IsKeyDown(Keys.Down))
             {
-                playerPosition.Y =+1;
+                    playerPosition.Y = playerPosition.Y + 1;
+                    if(playerPosition.Y == ((player.getPlayerX()+1)*60))
+                    {
+                        player.setPlayerX(player.getPlayerX() + 1);
+                    }
             }
+
+            //Works!
             if(keyboard.IsKeyDown(Keys.Left))
             {
-                playerPosition.X =-1;
+                playerPosition.X = playerPosition.X - 1;
+                if(playerPosition.X < (player.getPlayerY()*60))
+                {
+                    player.setPlayerY(player.getPlayerY() - 1);
+                }
             }
             if(keyboard.IsKeyDown(Keys.Right))
             {
-                playerPosition.X =+1;
+                playerPosition.X = playerPosition.X + 1;
+                if(playerPosition.X == ((player.getPlayerY()+1)*60))
+                {
+                    player.setPlayerY(player.getPlayerY() + 1);
+                }
             }
             /*
             if(keyboard.IsKeyDown(Keys.Up))
@@ -201,7 +219,7 @@ namespace Lab5_YumnaAziz_OOP
                 for(int j = 0; j<10; j++) 
                 {
                     String type = tiles[i, j].getType();
-                    if(type == "sand")
+                    if (type == "land")
                     {
                         //Where 60 is the width and heigth of the tile
                         spriteBatch.Draw(images[0], new Vector2(60*i, 60*j), Color.White); 

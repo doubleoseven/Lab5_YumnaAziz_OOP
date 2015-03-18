@@ -53,10 +53,11 @@ namespace Lab5_YumnaAziz_OOP
          //Accepts an array of tiles that were loaded from the game
         public bool canMove(Tile[,] tiles, int row, int column)
         {
-            Tile tile = tiles[row, column]; 
+            Tile[,] t = tiles;
+            Tile tile = t[row, column];
 
-            if (tile.canWalk()) return true;
-            else return false;
+            if (tile.canWalk()) { return true; }
+            else { return false; }
         }
 
 
