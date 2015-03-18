@@ -95,12 +95,12 @@ namespace Lab5_YumnaAziz_OOP
 
         public bool canWalk()
         {
-            return walk;
+            return this.walk;
         }
 
         public bool causesDamage()
         {
-            return damage;
+            return this.damage;
         }
 
         public void setDamage (bool damage)
@@ -155,7 +155,7 @@ namespace Lab5_YumnaAziz_OOP
             else
                 return walk;
         }
-         */
+        */
 
     }
 }

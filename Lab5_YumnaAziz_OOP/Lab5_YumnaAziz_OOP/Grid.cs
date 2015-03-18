@@ -32,7 +32,7 @@ namespace Lab5_YumnaAziz_OOP
                     {
                         //Load the sand tile in the tile array 
                        // tile[i, j] = new Tile(")
-                        tileArray[i, j] = new Tile("sand");
+                        tileArray[i, j] = new Tile("land");
                     }
                     
                     if(grid[i, j] == 1)

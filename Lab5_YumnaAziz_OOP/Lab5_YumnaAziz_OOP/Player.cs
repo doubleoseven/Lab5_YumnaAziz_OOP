@@ -9,15 +9,15 @@ namespace Lab5_YumnaAziz_OOP
     {
         private int row;
         private int column;
-        String direction; //playerPicUp1, playerPicUp2, playerPicDown1, playerPicDown2,
+        int direction; //playerPicUp1, playerPicUp2, playerPicDown1, playerPicDown2,
                             //playerPicLeft1, playerPicLeft2, playerPicRight1, playerPicRight2 
 
-        public Player(int x, int y)
-    {
-        row = x;
-        column = y;
-        direction = "up1";
-    }
+            public Player(int x, int y)
+        {
+            row = x;
+            column = y;
+            direction = 1;
+        }
 
 
         public int getPlayerX()
@@ -40,23 +40,24 @@ namespace Lab5_YumnaAziz_OOP
             column = y;
         }
 
-        public String getPlayerDirection()
+        public int getPlayerDirection()
         {
             return direction;
         }
         
-        public void setPlayerDirection(String d)
+        public void setPlayerDirection(int d)
         {
             direction = d;
         }
-
-        public bool canMove(int row, int column)
+        
+         //Accepts an array of tiles that were loaded from the game
+        public bool canMove(Tile[,] tiles, int row, int column)
         {
-            Grid grid = new Grid();
-            Tile tile = grid.getTile(row, column);
+            Tile[,] t = tiles;
+            Tile tile = t[row, column];
 
-            if (tile.canWalk()) return true;
-            else return false;
+            if (tile.canWalk()) { return true; }
+            else { return false; }
         }
 
 
