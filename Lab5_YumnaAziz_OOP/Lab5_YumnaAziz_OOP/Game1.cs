@@ -36,6 +36,7 @@ namespace Lab5_YumnaAziz_OOP
         Texture2D[] playerImages = new Texture2D[8];
         Player player = new Player(1, 1); //Player starts on tile 1, 1;
         Rectangle playerPosition;
+        bool up = true, down = true, left = true, right = true;
  
         public Game1()
         {
@@ -118,89 +119,136 @@ namespace Lab5_YumnaAziz_OOP
                 this.Exit();
 
             KeyboardState keyboard = Keyboard.GetState();
-            
-            if(keyboard.IsKeyDown(Keys.Up))
+
+            if (keyboard.IsKeyDown(Keys.Up))
             {
-                    playerPosition.Y = playerPosition.Y - 1;
-                    if (playerPosition.Y < (player.getPlayerX() * 60))
+                if ((player.canMove(tiles, player.getPlayerX() - 1, player.getPlayerY())) == true)
+                {
+                    if (playerPosition.Y != (player.getPlayerX() - 1) * 60)
                     {
-                        player.setPlayerX(player.getPlayerX() - 1);
+                        playerPosition.Y = playerPosition.Y - 1;
+                        player.setPlayerDirection("up");
+                        up = !up;
+                        if (playerPosition.Y < ((player.getPlayerX()-1) * 60))
+                        {
+                            if ((player.getPlayerX() - 1) >= 0)
+                                player.setPlayerX(player.getPlayerX() - 1);
+                        }
                     }
-            }
-            
-            if(keyboard.IsKeyDown(Keys.Down))
-            {
-                    playerPosition.Y = playerPosition.Y + 1;
-                    if(playerPosition.Y == ((player.getPlayerX()+1)*60))
-                    {
-                        player.setPlayerX(player.getPlayerX() + 1);
-                    }
+
+                }
+                else Console.WriteLine("Can't move at " + (player.getPlayerX() - 1) + " " + player.getPlayerY() +
+                    " " + tiles[player.getPlayerX() - 1, player.getPlayerY()].getType());
+
             }
 
-            //Works!
-            if(keyboard.IsKeyDown(Keys.Left))
-            {
-                playerPosition.X = playerPosition.X - 1;
-                if(playerPosition.X < (player.getPlayerY()*60))
-                {
-                    player.setPlayerY(player.getPlayerY() - 1);
-                }
-            }
-            if(keyboard.IsKeyDown(Keys.Right))
-            {
-                playerPosition.X = playerPosition.X + 1;
-                if(playerPosition.X == ((player.getPlayerY()+1)*60))
-                {
-                    player.setPlayerY(player.getPlayerY() + 1);
-                }
-            }
-            /*
-            if(keyboard.IsKeyDown(Keys.Up))
-            {
-                if (player.canMove(gridObject, player.getPlayerX(), player.getPlayerY() - 1) == true)
-                {
-                   player.setPlayerY(player.getPlayerY() - 1);
-                   playerPosition.Y = (player.getPlayerY() - 1);
-                   player.setPlayerDirection(1);
-                 
-                }
-            }
-            
+
             if (keyboard.IsKeyDown(Keys.Down))
             {
-                if (player.canMove(gridObject, player.getPlayerX(), player.getPlayerY() + 1) == true)
+                if ((player.canMove(tiles, player.getPlayerX() + 1, player.getPlayerY())) == true)
                 {
-                    player.setPlayerY(player.getPlayerY() + 1);
-                    playerPosition.Y = (player.getPlayerY() + 1);
-                    player.setPlayerDirection(2);
+                    if (playerPosition.Y != (player.getPlayerX() + 1) * 60)
+                    {
+                        playerPosition.Y = playerPosition.Y + 1;
+                        player.setPlayerDirection("down");
+                        down = !down;
+                        if (playerPosition.Y == ((player.getPlayerX() + 1) * 60))
+                        {
+                            player.setPlayerX(player.getPlayerX() + 1);
+                        }
+                    }
                 }
+                else Console.WriteLine("Can't move at " + (player.getPlayerX() + 1) + " " + player.getPlayerY() +
+                     " " + tiles[player.getPlayerX() + 1, player.getPlayerY()].getType());
             }
-
-            if (keyboard.IsKeyDown(Keys.Left))
-            {
-                if (player.canMove(gridObject, player.getPlayerX()-1, player.getPlayerY()) == true)
+                //Works!
+                if (keyboard.IsKeyDown(Keys.Left))
                 {
-                    player.setPlayerX(player.getPlayerX() - 1);
-                    playerPosition.X = (player.getPlayerX() - 1);
-                    player.setPlayerDirection(4);
-                }
-            }
+                    if ((player.canMove(tiles, player.getPlayerX(), player.getPlayerY() - 1)) == true)
+                    {
+                        if (playerPosition.X != (player.getPlayerY() - 1) * 60)
+                        {
+                            playerPosition.X = playerPosition.X - 1;
+                            player.setPlayerDirection("left");
+                            left = !left;
+                            if (((playerPosition.X == (player.getPlayerY()-1) * 60) && playerPosition.X > 0))
+                            {
+                                if ((player.getPlayerY() - 1) >= 0)
+                                    player.setPlayerY(player.getPlayerY() - 1);
+                            }
+                        }
 
-            if (keyboard.IsKeyDown(Keys.Right))
-            {
-                if (player.canMove(gridObject, player.getPlayerX() + 1, player.getPlayerY()) == true)
+                    }
+                    else Console.WriteLine("Can't move at " + player.getPlayerX() + " " + (player.getPlayerY() - 1) +
+                         " " + tiles[player.getPlayerX(), player.getPlayerY() - 1].getType());
+                }
+
+                if (keyboard.IsKeyDown(Keys.Right))
                 {
-                    player.setPlayerX(player.getPlayerX() + 1);
-                    playerPosition.X = (player.getPlayerX() + 1);
-                    player.setPlayerDirection(6);
-                }
-            }
-            */
-            // TODO: Add your update logic here
+                    if ((player.canMove(tiles, player.getPlayerX(), player.getPlayerY() + 1)) == true)
+                    {
+                        if (playerPosition.X != (player.getPlayerX() + 1) * 60)
+                        {
+                            playerPosition.X = playerPosition.X + 1;
+                            player.setPlayerDirection("right");
+                            right = !right;
+                            if (playerPosition.X == ((player.getPlayerY() + 1) * 60))
+                            {
+                                player.setPlayerY(player.getPlayerY() + 1);
+                            }
+                        }
 
-            base.Update(gameTime);
+                    }
+                    else Console.WriteLine("Can't move at " + player.getPlayerX() + " " + (player.getPlayerY() - 1) +
+                         " " + tiles[player.getPlayerX(), player.getPlayerY() + 1].getType());
+                }
+                /*
+                if(keyboard.IsKeyDown(Keys.Up))
+                {
+                    if (player.canMove(gridObject, player.getPlayerX(), player.getPlayerY() - 1) == true)
+                    {
+                       player.setPlayerY(player.getPlayerY() - 1);
+                       playerPosition.Y = (player.getPlayerY() - 1);
+                       player.setPlayerDirection(1);
+                 
+                    }
+                }
+            
+                if (keyboard.IsKeyDown(Keys.Down))
+                {
+                    if (player.canMove(gridObject, player.getPlayerX(), player.getPlayerY() + 1) == true)
+                    {
+                        player.setPlayerY(player.getPlayerY() + 1);
+                        playerPosition.Y = (player.getPlayerY() + 1);
+                        player.setPlayerDirection(2);
+                    }
+                }
+
+                if (keyboard.IsKeyDown(Keys.Left))
+                {
+                    if (player.canMove(gridObject, player.getPlayerX()-1, player.getPlayerY()) == true)
+                    {
+                        player.setPlayerX(player.getPlayerX() - 1);
+                        playerPosition.X = (player.getPlayerX() - 1);
+                        player.setPlayerDirection(4);
+                    }
+                }
+
+                if (keyboard.IsKeyDown(Keys.Right))
+                {
+                    if (player.canMove(gridObject, player.getPlayerX() + 1, player.getPlayerY()) == true)
+                    {
+                        player.setPlayerX(player.getPlayerX() + 1);
+                        playerPosition.X = (player.getPlayerX() + 1);
+                        player.setPlayerDirection(6);
+                    }
+                }
+                */
+                // TODO: Add your update logic here
+
+                base.Update(gameTime);
+           
         }
-
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
@@ -242,13 +290,46 @@ namespace Lab5_YumnaAziz_OOP
                     //spriteBatch.Draw(tiles[i, j].getTile(), new Vector2(60*i, 60*j), Color.White);
                 }
             }
-            for(int i = 0; i<8; i++)
-            {
-                     if(player.getPlayerDirection() == i)
+       
+            
+                if(player.getPlayerDirection() == "up")
                 {
-                    spriteBatch.Draw(playerImages[i], playerPosition, Color.White);
+                    if(up == true)
+                    {
+                        spriteBatch.Draw(playerImages[0], playerPosition, Color.White);
+                    }
+                    else spriteBatch.Draw(playerImages[1], playerPosition, Color.White);
+                    
                 }
-            }
+
+                if(player.getPlayerDirection() == "down")
+                {
+                    if(down == true)
+                    {
+                        spriteBatch.Draw(playerImages[2], playerPosition, Color.White);
+                    }
+                    else spriteBatch.Draw(playerImages[3], playerPosition, Color.White);
+                }
+
+                if(player.getPlayerDirection() == "left")
+                {
+                    if(left == true)
+                    {
+                        spriteBatch.Draw(playerImages[4], playerPosition, Color.White);
+                    }
+                    else spriteBatch.Draw(playerImages[5], playerPosition, Color.White);
+                    
+                }
+                if(player.getPlayerDirection() == "right")
+                {
+                    if(right == true)
+                    {
+                        spriteBatch.Draw(playerImages[6], playerPosition, Color.White);
+                    }
+                    else spriteBatch.Draw(playerImages[7], playerPosition, Color.White);
+                    
+                }
+            
            
 
             spriteBatch.End();

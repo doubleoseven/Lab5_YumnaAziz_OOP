@@ -34,7 +34,7 @@ namespace Lab5_YumnaAziz_OOP
 
             if(type.ToLower() == "water")
             {
-                walk = true;
+                walk = false;
                 damage = true;
                 //LoadContent("WaterTile");
             }
