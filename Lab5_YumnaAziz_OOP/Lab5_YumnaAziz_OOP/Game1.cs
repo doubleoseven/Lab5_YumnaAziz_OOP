@@ -121,6 +121,24 @@ namespace Lab5_YumnaAziz_OOP
             
             if(keyboard.IsKeyDown(Keys.Up))
             {
+                playerPosition.Y =-1;
+            }
+            
+            if(keyboard.IsKeyDown(Keys.Down))
+            {
+                playerPosition.Y =+1;
+            }
+            if(keyboard.IsKeyDown(Keys.Left))
+            {
+                playerPosition.X =-1;
+            }
+            if(keyboard.IsKeyDown(Keys.Right))
+            {
+                playerPosition.X =+1;
+            }
+            /*
+            if(keyboard.IsKeyDown(Keys.Up))
+            {
                 if (player.canMove(gridObject, player.getPlayerX(), player.getPlayerY() - 1) == true)
                 {
                    player.setPlayerY(player.getPlayerY() - 1);
@@ -159,7 +177,7 @@ namespace Lab5_YumnaAziz_OOP
                     player.setPlayerDirection(6);
                 }
             }
-            
+            */
             // TODO: Add your update logic here
 
             base.Update(gameTime);
