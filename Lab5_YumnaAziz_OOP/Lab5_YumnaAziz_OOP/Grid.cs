@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.GamerServices;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 
 
 namespace Lab5_YumnaAziz_OOP
@@ -9,25 +16,34 @@ namespace Lab5_YumnaAziz_OOP
     class Grid
     {
         private Tile[,] tileArray;
-        //int[,] tiles = new int[10, 10];
-        //int width = 60;
-        //int height = 60;
+        int width = 0;
+        int height = 0;
         
         //Is given an array of integers that specify which tile is which
         //Read each row, column and specify whether what the type is
         //Depedning on the type, create an array of tile objects 
 
-        public Tile[,] Load(int[,] grid)
+        //Make a contructor
+
+        public Grid(int w, int h)
+        {
+            tileArray = new Tile[w, h];
+            width = w;
+            height = h;
+        }
+        
+
+        public void Load(int[,] grid)
         {
             //http://www.dotnetperls.com/2d-array
-            int row = grid.GetUpperBound(0); //Upper bound = max number of elements starting from 0
-            int column = grid.GetUpperBound(1);
+            //int row = grid.GetUpperBound(0); //Upper bound = max number of elements starting from 0
+            //int column = grid.GetUpperBound(1);
 
-            tileArray = new Tile[row + 1, column + 1];
+            //tileArray = new Tile[row + 1, column + 1];
 
-            for (int i = 0; i <= row; i++)
+            for (int i = 0; i <width; i++)
             {
-                for (int j = 0; j <= column; j++)
+                for (int j = 0; j <height; j++)
                 {
                     if(grid[i, j] == 0)
                     {
@@ -72,14 +88,25 @@ namespace Lab5_YumnaAziz_OOP
             
             */
 
-            return tileArray;
+            //return tileArray;
         }
-        
+        /*
         public Tile getTile(int row, int column)
         {
             return tileArray[row, column];
         }
-         
 
+        */
+
+        public Tile getTile(Point Position)
+        {
+            return tileArray[Position.X, Position.Y];
+        }
+         /*
+        public bool canWalk(Point point)
+        {
+            return(point.X>=0 && point.X<width && point)
+        }
+        */
     }
 }

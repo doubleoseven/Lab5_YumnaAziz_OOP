@@ -18,7 +18,7 @@ namespace Lab5_YumnaAziz_OOP
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Grid gridObject = new Grid();
+        Grid gridObject = new Grid(10, 10);
         int[,] grid = {
             {3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
             {3, 0 ,0, 1, 1, 2, 2, 0, 0, 3},
@@ -31,7 +31,7 @@ namespace Lab5_YumnaAziz_OOP
             {3, 2, 2, 0, 1, 0, 0, 0, 2, 3},
             {3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
-        Tile[,] tiles = new Tile[10, 10];
+        //Tile[,] tiles = new Tile[10, 10];
         Texture2D[] images = new Texture2D[4]; //For tiles
         Texture2D[] playerImages = new Texture2D[8];
         Player player = new Player(1, 1); //Player starts on tile 1, 1;
@@ -67,7 +67,7 @@ namespace Lab5_YumnaAziz_OOP
                *   8 3 2 2 0 1 0 0 0 2 3
                *   9 3 3 3 3 3 3 3 3 3 3
             */
-            tiles = gridObject.Load(grid); //an array of object tiles
+            gridObject.Load(grid); //an array of object tiles
             playerPosition = new Rectangle(player.getPlayerX()* 60, player.getPlayerY() * 60, 55, 55);
                 //player.getPlayerX(), player.getPlayerY(), 50, 50);
             base.Initialize();
@@ -122,33 +122,20 @@ namespace Lab5_YumnaAziz_OOP
 
             if (keyboard.IsKeyDown(Keys.Up))
             {
-                if ((player.canMove(tiles, player.getPlayerX() - 1, player.getPlayerY())) == true)
-                {
-                    if (playerPosition.Y != (player.getPlayerX() - 1) * 60)
-                    {
                         playerPosition.Y = playerPosition.Y - 1;
                         player.setPlayerDirection("up");
                         up = !up;
-                        if (playerPosition.Y < ((player.getPlayerX()-1) * 60))
+                        if (playerPosition.Y < ((player.getPlayerX() - 1) * 60))
                         {
                             if ((player.getPlayerX() - 1) >= 0)
                                 player.setPlayerX(player.getPlayerX() - 1);
                         }
-                    }
-
-                }
-                else Console.WriteLine("Can't move at " + (player.getPlayerX() - 1) + " " + player.getPlayerY() +
-                    " " + tiles[player.getPlayerX() - 1, player.getPlayerY()].getType());
 
             }
 
 
             if (keyboard.IsKeyDown(Keys.Down))
             {
-                if ((player.canMove(tiles, player.getPlayerX() + 1, player.getPlayerY())) == true)
-                {
-                    if (playerPosition.Y != (player.getPlayerX() + 1) * 60)
-                    {
                         playerPosition.Y = playerPosition.Y + 1;
                         player.setPlayerDirection("down");
                         down = !down;
@@ -156,18 +143,11 @@ namespace Lab5_YumnaAziz_OOP
                         {
                             player.setPlayerX(player.getPlayerX() + 1);
                         }
-                    }
-                }
-                else Console.WriteLine("Can't move at " + (player.getPlayerX() + 1) + " " + player.getPlayerY() +
-                     " " + tiles[player.getPlayerX() + 1, player.getPlayerY()].getType());
             }
                 //Works!
                 if (keyboard.IsKeyDown(Keys.Left))
                 {
-                    if ((player.canMove(tiles, player.getPlayerX(), player.getPlayerY() - 1)) == true)
-                    {
-                        if (playerPosition.X != (player.getPlayerY() - 1) * 60)
-                        {
+                    
                             playerPosition.X = playerPosition.X - 1;
                             player.setPlayerDirection("left");
                             left = !left;
@@ -176,19 +156,10 @@ namespace Lab5_YumnaAziz_OOP
                                 if ((player.getPlayerY() - 1) >= 0)
                                     player.setPlayerY(player.getPlayerY() - 1);
                             }
-                        }
-
-                    }
-                    else Console.WriteLine("Can't move at " + player.getPlayerX() + " " + (player.getPlayerY() - 1) +
-                         " " + tiles[player.getPlayerX(), player.getPlayerY() - 1].getType());
                 }
 
                 if (keyboard.IsKeyDown(Keys.Right))
                 {
-                    if ((player.canMove(tiles, player.getPlayerX(), player.getPlayerY() + 1)) == true)
-                    {
-                        if (playerPosition.X != (player.getPlayerX() + 1) * 60)
-                        {
                             playerPosition.X = playerPosition.X + 1;
                             player.setPlayerDirection("right");
                             right = !right;
@@ -196,11 +167,6 @@ namespace Lab5_YumnaAziz_OOP
                             {
                                 player.setPlayerY(player.getPlayerY() + 1);
                             }
-                        }
-
-                    }
-                    else Console.WriteLine("Can't move at " + player.getPlayerX() + " " + (player.getPlayerY() - 1) +
-                         " " + tiles[player.getPlayerX(), player.getPlayerY() + 1].getType());
                 }
                 /*
                 if(keyboard.IsKeyDown(Keys.Up))
@@ -262,11 +228,14 @@ namespace Lab5_YumnaAziz_OOP
             //tiles = gridObject.getTileArray();
 
             //
+            Point position;
             for (int i = 0; i < 10; i++)
             {
                 for(int j = 0; j<10; j++) 
                 {
-                    String type = tiles[i, j].getType();
+                    position.X = i;
+                    position.Y = j;
+                    String type = gridObject.getTile(position).getType();
                     if (type == "land")
                     {
                         //Where 60 is the width and heigth of the tile
