@@ -19,7 +19,7 @@ namespace Lab5_YumnaAziz_OOP
         private String type; //Can be Water Land Grass or Rock
         private bool walk = true;
         private bool damage = true;
-        //private Texture2D tileImage;
+        private Texture2D tileImage;
         private int height = 60;
         private int width = 60;
        // var listOfTiles = new List<Texture2D>
@@ -28,7 +28,7 @@ namespace Lab5_YumnaAziz_OOP
    // {"water", "land", "grass", "rock"};
         
 
-        public Tile(String type1)
+        public Tile(String type1,Texture2D tile)
         {
             this.type = type1;
 
@@ -36,62 +36,58 @@ namespace Lab5_YumnaAziz_OOP
             {
                 walk = false;
                 damage = true;
+                tileImage = tile;
                 //LoadContent("WaterTile");
             }
             if(type.ToLower() == "land")
             {
                 walk = true;
                 damage = false;
+                tileImage = tile;
                 //LoadContent("SandTile");
             }
             if(type.ToLower() == "grass")
             {
                 walk = true;
                 damage = false;
+                tileImage = tile;
                 //LoadContent("GrassTile");
             }
             if(type.ToLower() == "rock")
             {
                 walk = false;
                 damage = false;
+                tileImage = tile;
                 //LoadContent("RockTile");
             }
 
         }
         
-
         public Tile()
         {
             type = null;
-            //tileImage = null;
+            tileImage = null;
         }
-        
-        /*
-        public override void LoadContent(String type)
-        {
-            tileImage = game.Content.Load<Texture2D>("images/" + type);
-        }
-        */
 
         public void setType(String type)
         {
             this.type = type;
         }
-        /*
+        
         public void setTile(Texture2D tile)
         {
             this.tileImage = tile;
-        }*/
+        }
 
         public String getType()
         {
             return type;
         }
-        /*
+        
         public Texture2D getTile()
         {
             return tileImage;
-        }*/
+        }
 
         public bool canWalk()
         {
@@ -132,30 +128,6 @@ namespace Lab5_YumnaAziz_OOP
         {
             return height;
         }
-
-
-        
-        /*
-        public bool canWalk()
-        {
-            if(type == "water")
-            {
-                return (walk = false);
-            }
-            
-            if(type == "land")
-            {
-                return walk;
-            }
-            if (type == "rock")
-            {
-                return walk = false;
-            }
-
-            else
-                return walk;
-        }
-        */
 
     }
 }
