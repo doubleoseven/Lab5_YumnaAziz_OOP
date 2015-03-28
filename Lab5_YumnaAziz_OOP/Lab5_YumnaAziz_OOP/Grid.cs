@@ -18,7 +18,7 @@ namespace Lab5_YumnaAziz_OOP
         private Tile[,] tileArray;
         int width = 0;
         int height = 0;
-        
+
         //Is given an array of integers that specify which tile is which
         //Read each row, column and specify whether what the type is
         //Depedning on the type, create an array of tile objects 
@@ -31,7 +31,7 @@ namespace Lab5_YumnaAziz_OOP
             width = w;
             height = h;
         }
-        
+
 
         public void Load(int[,] grid)
         {
@@ -41,42 +41,42 @@ namespace Lab5_YumnaAziz_OOP
 
             //tileArray = new Tile[row + 1, column + 1];
 
-            for (int i = 0; i <width; i++)
+            for (int i = 0; i < width; i++)
             {
-                for (int j = 0; j <height; j++)
+                for (int j = 0; j < height; j++)
                 {
-                    if(grid[i, j] == 0)
+                    if (grid[i, j] == 0)
                     {
                         //Load the sand tile in the tile array 
-                       // tile[i, j] = new Tile(")
+                        // tile[i, j] = new Tile(")
                         tileArray[i, j] = new Tile("land");
                     }
-                    
-                    if(grid[i, j] == 1)
+
+                    if (grid[i, j] == 1)
                     {
                         //Load the grass title
                         tileArray[i, j] = new Tile("grass");
                     }
-                    
-                    if(grid[i, j] == 2)
+
+                    if (grid[i, j] == 2)
                     {
                         //Load the water title
                         tileArray[i, j] = new Tile("water");
                     }
-                    
-                    if(grid[i, j] == 3)
+
+                    if (grid[i, j] == 3)
                     {
                         //Load the rock title
                         tileArray[i, j] = new Tile("rock");
-                        
+
                     }
-                    
+
                 }
             }
-            
-            
-            
-            
+
+
+
+
             /*
             for (int i = 0; i<10; i++)
             {
@@ -102,11 +102,12 @@ namespace Lab5_YumnaAziz_OOP
         {
             return tileArray[Position.X, Position.Y];
         }
-         /*
+
         public bool canWalk(Point point)
         {
-            return(point.X>=0 && point.X<width && point)
+            return (point.X >= 0 && point.X < width && point.Y >= 0 && point.Y < height) && getTile(point).canWalk();
         }
-        */
     }
+
 }
+

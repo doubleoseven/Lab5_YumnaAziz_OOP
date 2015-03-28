@@ -14,40 +14,28 @@ namespace Lab5_YumnaAziz_OOP
 {
     class Player
     {
-        private int row;
-        private int column;
+        private Point playerPosition;
         private String direction; //up, down, left, right 
         private Texture2D playerImage; //We're declaring this but not loading this in the class
         
 
-            public Player(int x, int y)
+            public Player(Point player)
         {
-            row = x;
-            column = y;
+            playerPosition = player;
             direction = "up";
-            //playerImage = player;
+            //playerImage = image;
         }
 
-
-        public int getPlayerX()
+        public Point getPlayerPosition()
         {
-            return row;
+            return playerPosition;
         }
 
-        public int getPlayerY()
+        public void setPlayerPosition(Point point)
         {
-            return column;
+            playerPosition = point;
         }
 
-        public void setPlayerX(int x)
-        {
-            row = x;
-        }
-
-        public void setPlayerY(int y)
-        {
-            column = y;
-        }
 
         public String getPlayerDirection()
         {
@@ -58,7 +46,7 @@ namespace Lab5_YumnaAziz_OOP
         {
             direction = d;
         }
-        
+        /*
         public void setPlayerImage(Texture2D image)
         {
             playerImage = image;
@@ -66,8 +54,10 @@ namespace Lab5_YumnaAziz_OOP
         
         public Texture2D getPlayerImage()
         {
-            return playerImage
+            return playerImage;
         }
+
+        /*
          //Accepts an array of tiles that were loaded from the game
         public bool canMove(Tile[,] tiles, int row, int column)
         {
@@ -77,7 +67,7 @@ namespace Lab5_YumnaAziz_OOP
             if (tile.canWalk()) { return true; }
             else { return false; }
         }
-
+        */
 
     }
 }

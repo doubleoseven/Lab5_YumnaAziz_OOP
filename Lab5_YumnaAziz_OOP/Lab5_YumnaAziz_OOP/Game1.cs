@@ -19,7 +19,7 @@ namespace Lab5_YumnaAziz_OOP
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Grid gridObject = new Grid(10, 10);
-        int[,] grid = {
+        int[,] grid = { 
             {3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
             {3, 0 ,0, 1, 1, 2, 2, 0, 0, 3},
             {3, 0, 0, 0, 1, 2, 2, 2, 0, 3},
@@ -34,7 +34,8 @@ namespace Lab5_YumnaAziz_OOP
         //Tile[,] tiles = new Tile[10, 10];
         Texture2D[] images = new Texture2D[4]; //For tiles
         Texture2D[] playerImages = new Texture2D[8];
-        Player player = new Player(1, 1); //Player starts on tile 1, 1;
+        Point point = (1, 1);
+        Player player = new Player(1,1); //Player starts on tile 1, 1;
         Rectangle playerPosition;
         bool up = true, down = true, left = true, right = true;
  
@@ -119,100 +120,7 @@ namespace Lab5_YumnaAziz_OOP
                 this.Exit();
 
             KeyboardState keyboard = Keyboard.GetState();
-
-            if (keyboard.IsKeyDown(Keys.Up))
-            {
-                        playerPosition.Y = playerPosition.Y - 1;
-                        player.setPlayerDirection("up");
-                        up = !up;
-                        if (playerPosition.Y < ((player.getPlayerX() - 1) * 60))
-                        {
-                            if ((player.getPlayerX() - 1) >= 0)
-                                player.setPlayerX(player.getPlayerX() - 1);
-                        }
-
-            }
-
-
-            if (keyboard.IsKeyDown(Keys.Down))
-            {
-                        playerPosition.Y = playerPosition.Y + 1;
-                        player.setPlayerDirection("down");
-                        down = !down;
-                        if (playerPosition.Y == ((player.getPlayerX() + 1) * 60))
-                        {
-                            player.setPlayerX(player.getPlayerX() + 1);
-                        }
-            }
-                //Works!
-                if (keyboard.IsKeyDown(Keys.Left))
-                {
-                    
-                            playerPosition.X = playerPosition.X - 1;
-                            player.setPlayerDirection("left");
-                            left = !left;
-                            if (((playerPosition.X == (player.getPlayerY()-1) * 60) && playerPosition.X > 0))
-                            {
-                                if ((player.getPlayerY() - 1) >= 0)
-                                    player.setPlayerY(player.getPlayerY() - 1);
-                            }
-                }
-
-                if (keyboard.IsKeyDown(Keys.Right))
-                {
-                            playerPosition.X = playerPosition.X + 1;
-                            player.setPlayerDirection("right");
-                            right = !right;
-                            if (playerPosition.X == ((player.getPlayerY() + 1) * 60))
-                            {
-                                player.setPlayerY(player.getPlayerY() + 1);
-                            }
-                }
-                /*
-                if(keyboard.IsKeyDown(Keys.Up))
-                {
-                    if (player.canMove(gridObject, player.getPlayerX(), player.getPlayerY() - 1) == true)
-                    {
-                       player.setPlayerY(player.getPlayerY() - 1);
-                       playerPosition.Y = (player.getPlayerY() - 1);
-                       player.setPlayerDirection(1);
-                 
-                    }
-                }
-            
-                if (keyboard.IsKeyDown(Keys.Down))
-                {
-                    if (player.canMove(gridObject, player.getPlayerX(), player.getPlayerY() + 1) == true)
-                    {
-                        player.setPlayerY(player.getPlayerY() + 1);
-                        playerPosition.Y = (player.getPlayerY() + 1);
-                        player.setPlayerDirection(2);
-                    }
-                }
-
-                if (keyboard.IsKeyDown(Keys.Left))
-                {
-                    if (player.canMove(gridObject, player.getPlayerX()-1, player.getPlayerY()) == true)
-                    {
-                        player.setPlayerX(player.getPlayerX() - 1);
-                        playerPosition.X = (player.getPlayerX() - 1);
-                        player.setPlayerDirection(4);
-                    }
-                }
-
-                if (keyboard.IsKeyDown(Keys.Right))
-                {
-                    if (player.canMove(gridObject, player.getPlayerX() + 1, player.getPlayerY()) == true)
-                    {
-                        player.setPlayerX(player.getPlayerX() + 1);
-                        playerPosition.X = (player.getPlayerX() + 1);
-                        player.setPlayerDirection(6);
-                    }
-                }
-                */
-                // TODO: Add your update logic here
-
-                base.Update(gameTime);
+            base.Update(gameTime);
            
         }
         /// <summary>

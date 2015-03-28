@@ -19,7 +19,7 @@ namespace Lab5_YumnaAziz_OOP
         private String type; //Can be Water Land Grass or Rock
         private bool walk = true;
         private bool damage = true;
-        private Texture2D tileImage;
+       // private Texture2D tileImage;
         private int height = 60;
         private int width = 60;
        // var listOfTiles = new List<Texture2D>
@@ -28,36 +28,37 @@ namespace Lab5_YumnaAziz_OOP
    // {"water", "land", "grass", "rock"};
         
 
-        public Tile(String type1,Texture2D tile)
+        public Tile(String type1)
         {
             this.type = type1;
-
+            //tileImage = null;
+            
             if(type.ToLower() == "water")
             {
                 walk = false;
                 damage = true;
-                tileImage = tile;
+                //tileImage = tile;
                 //LoadContent("WaterTile");
             }
             if(type.ToLower() == "land")
             {
                 walk = true;
                 damage = false;
-                tileImage = tile;
+                //tileImage = tile;
                 //LoadContent("SandTile");
             }
             if(type.ToLower() == "grass")
             {
                 walk = true;
                 damage = false;
-                tileImage = tile;
+                //tileImage = tile;
                 //LoadContent("GrassTile");
             }
             if(type.ToLower() == "rock")
             {
                 walk = false;
                 damage = false;
-                tileImage = tile;
+                //tileImage = tile;
                 //LoadContent("RockTile");
             }
 
@@ -66,7 +67,7 @@ namespace Lab5_YumnaAziz_OOP
         public Tile()
         {
             type = null;
-            tileImage = null;
+            //tileImage = null;
         }
 
         public void setType(String type)
@@ -74,20 +75,21 @@ namespace Lab5_YumnaAziz_OOP
             this.type = type;
         }
         
-        public void setTile(Texture2D tile)
-        {
-            this.tileImage = tile;
-        }
 
         public String getType()
         {
             return type;
         }
-        
+        /*
         public Texture2D getTile()
         {
             return tileImage;
         }
+
+        public void setTile(Texture2D tile)
+        {
+            this.tileImage = tile;
+        } */
 
         public bool canWalk()
         {
