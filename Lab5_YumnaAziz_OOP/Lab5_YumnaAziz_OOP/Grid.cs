@@ -48,7 +48,6 @@ namespace Lab5_YumnaAziz_OOP
                     if(grid[i, j] == 0)
                     {
                         //Load the sand tile in the tile array 
-                       // tile[i, j] = new Tile(")
                         tileArray[i, j] = new Tile("land");
                     }
                     
@@ -73,44 +72,16 @@ namespace Lab5_YumnaAziz_OOP
                     
                 }
             }
-            
-            
-            
-            
-            /*
-            for (int i = 0; i<10; i++)
-            {
-                for (int j = 0; j<10; j++)
-                {
-                    grid[i][j]
-                }
-            }
-            
-            */
-
-            //return tileArray;
         }
-        /*
-        public Tile getTile(int row, int column)
-        {
-            return tileArray[row, column];
-        }
-
-        */
 
         public Tile getTile(int x, int y)
         {
             return tileArray[x, y];
         }
-         /*
-        public bool canWalk(Point point)
-        {
-            return(point.X>=0 && point.X<width && point)
-        }
-        */
 
         public bool canWalk(int x,  int y)
         {
+            //Checks screen dimensions
             if (x > 0 && x < width && y > 0 && y < height)
             {
                 if (getTile(x, y).canWalk() == true)
@@ -119,6 +90,7 @@ namespace Lab5_YumnaAziz_OOP
                 }
                 else return false;
             }
+            //Outside of screen dimensions
             else return false;
                 
         }

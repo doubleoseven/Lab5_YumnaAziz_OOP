@@ -32,11 +32,11 @@ namespace Lab5_YumnaAziz_OOP
             {3, 3, 3, 3, 3, 3, 3, 3, 3, 3}
             };
         //Tile[,] tiles = new Tile[10, 10];
-        Texture2D[] images = new Texture2D[4]; //For tiles
+        Texture2D[] images = new Texture2D[4]; //For tile images
         Texture2D[] playerImages = new Texture2D[8];
         Player player = new Player(1, 1); //Player starts on tile 1, 1;
         Rectangle playerPosition;
-        bool up = true, down = true, left = true, right = true;
+        bool up = true, down = true, left = true, right = true; //Animation variables
  
         public Game1()
         {
@@ -122,6 +122,7 @@ namespace Lab5_YumnaAziz_OOP
 
             if (keyboard.IsKeyDown(Keys.Up))
             {
+                //For debugging purposes 
                 Console.WriteLine(gridObject.canWalk(player.getPlayerX(), player.getPlayerY() - 1));
                 if (gridObject.canWalk(player.getPlayerX(), player.getPlayerY() - 1) == true)
                 {
@@ -135,8 +136,9 @@ namespace Lab5_YumnaAziz_OOP
                 else Console.WriteLine("Can't move at: " + gridObject.getTile(player.getPlayerX(), player.getPlayerY() - 1).getType() +
                   " " + player.getPlayerX() + 
                   " " + (player.getPlayerY() -1));
-                        
+                  
                    player.setPlayerDirection("up");
+                   //For the animation
                    up = !up;
                         
 
@@ -163,7 +165,6 @@ namespace Lab5_YumnaAziz_OOP
                   down = !down;
                       
             }
-                //Works!
                 if (keyboard.IsKeyDown(Keys.Left))
                 {
                     Console.WriteLine(gridObject.canWalk(player.getPlayerX() - 1, player.getPlayerY()));
@@ -207,48 +208,6 @@ namespace Lab5_YumnaAziz_OOP
                             right = !right;
                            
                 }
-                /*
-                if(keyboard.IsKeyDown(Keys.Up))
-                {
-                    if (player.canMove(gridObject, player.getPlayerX(), player.getPlayerY() - 1) == true)
-                    {
-                       player.setPlayerY(player.getPlayerY() - 1);
-                       playerPosition.Y = (player.getPlayerY() - 1);
-                       player.setPlayerDirection(1);
-                 
-                    }
-                }
-            
-                if (keyboard.IsKeyDown(Keys.Down))
-                {
-                    if (player.canMove(gridObject, player.getPlayerX(), player.getPlayerY() + 1) == true)
-                    {
-                        player.setPlayerY(player.getPlayerY() + 1);
-                        playerPosition.Y = (player.getPlayerY() + 1);
-                        player.setPlayerDirection(2);
-                    }
-                }
-
-                if (keyboard.IsKeyDown(Keys.Left))
-                {
-                    if (player.canMove(gridObject, player.getPlayerX()-1, player.getPlayerY()) == true)
-                    {
-                        player.setPlayerX(player.getPlayerX() - 1);
-                        playerPosition.X = (player.getPlayerX() - 1);
-                        player.setPlayerDirection(4);
-                    }
-                }
-
-                if (keyboard.IsKeyDown(Keys.Right))
-                {
-                    if (player.canMove(gridObject, player.getPlayerX() + 1, player.getPlayerY()) == true)
-                    {
-                        player.setPlayerX(player.getPlayerX() + 1);
-                        playerPosition.X = (player.getPlayerX() + 1);
-                        player.setPlayerDirection(6);
-                    }
-                }
-                */
                 // TODO: Add your update logic here
 
                 base.Update(gameTime);
@@ -295,7 +254,6 @@ namespace Lab5_YumnaAziz_OOP
                     {
                         spriteBatch.Draw(images[3], new Vector2(60 * i, 60 * j), Color.White);
                     }
-                    //spriteBatch.Draw(tiles[i, j].getTile(), new Vector2(60*i, 60*j), Color.White);
                 }
             }
        
