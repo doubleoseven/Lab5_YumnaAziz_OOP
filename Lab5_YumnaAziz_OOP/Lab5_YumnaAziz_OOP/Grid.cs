@@ -50,32 +50,24 @@ namespace Lab5_YumnaAziz_OOP
                         //Load the sand tile in the tile array 
                        // tile[i, j] = new Tile(")
                         tileArray[i, j] = new Tile("land");
-                        Point id = new Point(i, j);
-                        tileArray[i, j].setID(id);
                     }
                     
                     if(grid[i, j] == 1)
                     {
                         //Load the grass title
                         tileArray[i, j] = new Tile("grass");
-                        Point id = new Point(i, j);
-                        tileArray[i, j].setID(id);
                     }
                     
                     if(grid[i, j] == 2)
                     {
                         //Load the water title
                         tileArray[i, j] = new Tile("water");
-                        Point id = new Point(i, j);
-                        tileArray[i, j].setID(id);
                     }
                     
                     if(grid[i, j] == 3)
                     {
                         //Load the rock title
                         tileArray[i, j] = new Tile("rock");
-                        Point id = new Point(i, j);
-                        tileArray[i, j].setID(id);
                         
                     }
                     

@@ -14,47 +14,46 @@ namespace Lab5_YumnaAziz_OOP
 {
     class Tile
     //Riles array in which to load each image. 
-    //place the images in a tile ob
+        //place the images in a tile ob
     {
         private String type; //Can be Water Land Grass or Rock
-        Point id;
         private bool walk = true;
         private bool damage = true;
         private Texture2D tileImage;
         private int height = 60;
         private int width = 60;
-        // var listOfTiles = new List<Texture2D>
-        // String[] tiles = new String[4];
-        //  Texture2D[] tiles = new 
-        // {"water", "land", "grass", "rock"};
-
+       // var listOfTiles = new List<Texture2D>
+       // String[] tiles = new String[4];
+      //  Texture2D[] tiles = new 
+   // {"water", "land", "grass", "rock"};
+        
 
         public Tile(String type1)
         {
             this.type = type1;
 
-            if (type.ToLower() == "water")
+            if(type.ToLower() == "water")
             {
                 walk = false;
                 damage = true;
                 //tileImage = tile;
                 //LoadContent("WaterTile");
             }
-            if (type.ToLower() == "land")
+            if(type.ToLower() == "land")
             {
                 walk = true;
                 damage = false;
                 //tileImage = tile;
                 //LoadContent("SandTile");
             }
-            if (type.ToLower() == "grass")
+            if(type.ToLower() == "grass")
             {
                 walk = true;
                 damage = false;
                 //tileImage = tile;
                 //LoadContent("GrassTile");
             }
-            if (type.ToLower() == "rock")
+            if(type.ToLower() == "rock")
             {
                 walk = false;
                 damage = false;
@@ -63,7 +62,7 @@ namespace Lab5_YumnaAziz_OOP
             }
 
         }
-
+        
         public Tile()
         {
             type = null;
@@ -74,7 +73,7 @@ namespace Lab5_YumnaAziz_OOP
         {
             this.type = type;
         }
-
+        
         public void setTile(Texture2D tile)
         {
             this.tileImage = tile;
@@ -84,7 +83,7 @@ namespace Lab5_YumnaAziz_OOP
         {
             return type;
         }
-
+        
         public Texture2D getTile()
         {
             return tileImage;
@@ -100,12 +99,12 @@ namespace Lab5_YumnaAziz_OOP
             return this.damage;
         }
 
-        public void setDamage(bool damage)
+        public void setDamage (bool damage)
         {
             this.damage = damage;
         }
 
-        public void setWalk(bool walk)
+        public void setWalk (bool walk)
         {
             this.walk = walk;
         }
@@ -130,15 +129,5 @@ namespace Lab5_YumnaAziz_OOP
             return height;
         }
 
-        public Point getID()
-        {
-            return id;
-        }
-
-        public void setID(Point id)
-        {
-            this.id = id;
-        }
     }
-
 }
