@@ -68,7 +68,7 @@ namespace Lab5_YumnaAziz_OOP
                *   9 3 3 3 3 3 3 3 3 3 3
             */
             gridObject.Load(grid); //an array of object tiles
-            playerPosition = new Rectangle(player.getPlayerX()* 60, player.getPlayerY() * 60, 55, 55);
+            playerPosition = new Rectangle(player.getPlayerX()* 60, player.getPlayerY() * 60, 60, 60);
                 //player.getPlayerX(), player.getPlayerY(), 50, 50);
             base.Initialize();
         }
@@ -122,13 +122,13 @@ namespace Lab5_YumnaAziz_OOP
 
             if (keyboard.IsKeyDown(Keys.Up))
             {
-                        playerPosition.Y = playerPosition.Y - 1;
+                        playerPosition.Y = playerPosition.Y - 60;
                         player.setPlayerDirection("up");
                         up = !up;
-                        if (playerPosition.Y < ((player.getPlayerX() - 1) * 60))
+                        if (playerPosition.Y > 0)
                         {
-                            if ((player.getPlayerX() - 1) >= 0)
-                                player.setPlayerX(player.getPlayerX() - 1);
+                            if ((player.getPlayerY() - 1) >= 0)
+                                player.setPlayerY(player.getPlayerY() - 1);
                         }
 
             }
@@ -136,36 +136,38 @@ namespace Lab5_YumnaAziz_OOP
 
             if (keyboard.IsKeyDown(Keys.Down))
             {
-                        playerPosition.Y = playerPosition.Y + 1;
+                        playerPosition.Y = playerPosition.Y + 60;
                         player.setPlayerDirection("down");
                         down = !down;
-                        if (playerPosition.Y == ((player.getPlayerX() + 1) * 60))
+                        if (playerPosition.Y <600)
                         {
-                            player.setPlayerX(player.getPlayerX() + 1);
+                            if((player.getPlayerY() + 1)<=10)
+                            player.setPlayerY(player.getPlayerY() + 1);
                         }
             }
                 //Works!
                 if (keyboard.IsKeyDown(Keys.Left))
                 {
                     
-                            playerPosition.X = playerPosition.X - 1;
+                            playerPosition.X = playerPosition.X - 60;
                             player.setPlayerDirection("left");
                             left = !left;
-                            if (((playerPosition.X == (player.getPlayerY()-1) * 60) && playerPosition.X > 0))
+                            if (((playerPosition.X > 0))
                             {
-                                if ((player.getPlayerY() - 1) >= 0)
-                                    player.setPlayerY(player.getPlayerY() - 1);
+                                if ((player.getPlayerX() - 1) >= 0)
+                                    player.setPlayerX(player.getPlayerX() - 1);
                             }
                 }
 
                 if (keyboard.IsKeyDown(Keys.Right))
                 {
-                            playerPosition.X = playerPosition.X + 1;
+                            playerPosition.X = playerPosition.X + 60;
                             player.setPlayerDirection("right");
                             right = !right;
-                            if (playerPosition.X == ((player.getPlayerY() + 1) * 60))
+                            if (playerPosition.X <600)
                             {
-                                player.setPlayerY(player.getPlayerY() + 1);
+                                if((player.getPlayerX()-1) <= 10)
+                                player.setPlayerX(player.getPlayerX() + 1);
                             }
                 }
                 /*
