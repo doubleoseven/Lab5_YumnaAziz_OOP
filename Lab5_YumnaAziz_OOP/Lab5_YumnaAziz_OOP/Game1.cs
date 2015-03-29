@@ -68,7 +68,7 @@ namespace Lab5_YumnaAziz_OOP
                *   9 3 3 3 3 3 3 3 3 3 3
             */
             gridObject.Load(grid); //an array of object tiles
-            playerPosition = new Rectangle(player.getPlayerX()* 60, player.getPlayerY() * 60, 60, 60);
+            playerPosition = new Rectangle(60, 60, 60, 60);
                 //player.getPlayerX(), player.getPlayerY(), 50, 50);
             base.Initialize();
         }
@@ -122,53 +122,90 @@ namespace Lab5_YumnaAziz_OOP
 
             if (keyboard.IsKeyDown(Keys.Up))
             {
-                        playerPosition.Y = playerPosition.Y - 60;
-                        player.setPlayerDirection("up");
-                        up = !up;
-                        if (playerPosition.Y > 0)
-                        {
-                            if ((player.getPlayerY() - 1) >= 0)
-                                player.setPlayerY(player.getPlayerY() - 1);
-                        }
+                Console.WriteLine(gridObject.canWalk(player.getPlayerX(), player.getPlayerY() - 1));
+                if (gridObject.canWalk(player.getPlayerX(), player.getPlayerY() - 1) == true)
+                {
+                    playerPosition.Y = playerPosition.Y - 60;
+                    if (playerPosition.Y > 0)
+                    {
+                        if ((player.getPlayerY() - 1) >= 0)
+                            player.setPlayerY(player.getPlayerY() - 1);
+                    }
+                }
+                else Console.WriteLine("Can't move at: " + gridObject.getTile(player.getPlayerX(), player.getPlayerY() - 1).getType() +
+                  " " + player.getPlayerX() + 
+                  " " + (player.getPlayerY() -1));
+                        
+                   player.setPlayerDirection("up");
+                   up = !up;
+                        
 
             }
 
 
             if (keyboard.IsKeyDown(Keys.Down))
             {
-                        playerPosition.Y = playerPosition.Y + 60;
-                        player.setPlayerDirection("down");
-                        down = !down;
-                        if (playerPosition.Y <600)
-                        {
-                            if((player.getPlayerY() + 1)<=10)
+                Console.WriteLine(gridObject.canWalk(player.getPlayerX(), player.getPlayerY() + 1));
+                if (gridObject.canWalk(player.getPlayerX(), player.getPlayerY() + 1) == true)
+                {
+                    playerPosition.Y = playerPosition.Y + 60;
+                    if (playerPosition.Y < 600)
+                    {
+                        if ((player.getPlayerY() + 1) <= 10)
                             player.setPlayerY(player.getPlayerY() + 1);
-                        }
+                    }
+                }
+                else Console.WriteLine("Can't move at: " + gridObject.getTile(player.getPlayerX(), player.getPlayerY() + 1).getType() +
+                     " " + player.getPlayerX() +
+                  " " + (player.getPlayerY() + 1));
+
+                  player.setPlayerDirection("down");
+                  down = !down;
+                      
             }
                 //Works!
                 if (keyboard.IsKeyDown(Keys.Left))
                 {
+                    Console.WriteLine(gridObject.canWalk(player.getPlayerX() - 1, player.getPlayerY()));
+                    if (gridObject.canWalk(player.getPlayerX() - 1, player.getPlayerY()) == true)
+                    {
+                        playerPosition.X = playerPosition.X - 60;
+                        if (playerPosition.X > 0)
+                        {
+                            if ((player.getPlayerX() - 1) >= 0)
+                                player.setPlayerX(player.getPlayerX() - 1);
+                        }
+                    }
+                    else Console.WriteLine("Can't move at: " + gridObject.getTile(player.getPlayerX() - 1, player.getPlayerY()).getType() +
+                      " " + (player.getPlayerX() - 1) +
+                      " " + (player.getPlayerY()));
+
                     
-                            playerPosition.X = playerPosition.X - 60;
+                           
                             player.setPlayerDirection("left");
                             left = !left;
-                            if (((playerPosition.X > 0))
-                            {
-                                if ((player.getPlayerX() - 1) >= 0)
-                                    player.setPlayerX(player.getPlayerX() - 1);
-                            }
+                           
                 }
 
                 if (keyboard.IsKeyDown(Keys.Right))
                 {
-                            playerPosition.X = playerPosition.X + 60;
+                    Console.WriteLine(gridObject.canWalk(player.getPlayerX() + 1, player.getPlayerY()));
+                    if (gridObject.canWalk(player.getPlayerX() + 1, player.getPlayerY()) == true)
+                    {
+                        playerPosition.X = playerPosition.X + 60;
+                        if (playerPosition.X < 600)
+                        {
+                            if ((player.getPlayerX() - 1) <= 10)
+                                player.setPlayerX(player.getPlayerX() + 1);
+                        }
+                    }
+                    else Console.WriteLine("Can't move at: " + gridObject.getTile(player.getPlayerX() + 1, player.getPlayerY()).getType() +
+                         " " + (player.getPlayerX() + 1) +
+                      " " + (player.getPlayerY()));
+                           
                             player.setPlayerDirection("right");
                             right = !right;
-                            if (playerPosition.X <600)
-                            {
-                                if((player.getPlayerX()-1) <= 10)
-                                player.setPlayerX(player.getPlayerX() + 1);
-                            }
+                           
                 }
                 /*
                 if(keyboard.IsKeyDown(Keys.Up))
@@ -237,7 +274,7 @@ namespace Lab5_YumnaAziz_OOP
                 {
                     position.X = i;
                     position.Y = j;
-                    String type = gridObject.getTile(position).getType();
+                    String type = gridObject.getTile(i,j).getType();
                     if (type == "land")
                     {
                         //Where 60 is the width and heigth of the tile

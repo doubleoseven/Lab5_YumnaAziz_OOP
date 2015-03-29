@@ -50,24 +50,32 @@ namespace Lab5_YumnaAziz_OOP
                         //Load the sand tile in the tile array 
                        // tile[i, j] = new Tile(")
                         tileArray[i, j] = new Tile("land");
+                        Point id = new Point(i, j);
+                        tileArray[i, j].setID(id);
                     }
                     
                     if(grid[i, j] == 1)
                     {
                         //Load the grass title
                         tileArray[i, j] = new Tile("grass");
+                        Point id = new Point(i, j);
+                        tileArray[i, j].setID(id);
                     }
                     
                     if(grid[i, j] == 2)
                     {
                         //Load the water title
                         tileArray[i, j] = new Tile("water");
+                        Point id = new Point(i, j);
+                        tileArray[i, j].setID(id);
                     }
                     
                     if(grid[i, j] == 3)
                     {
                         //Load the rock title
                         tileArray[i, j] = new Tile("rock");
+                        Point id = new Point(i, j);
+                        tileArray[i, j].setID(id);
                         
                     }
                     
@@ -98,9 +106,9 @@ namespace Lab5_YumnaAziz_OOP
 
         */
 
-        public Tile getTile(Point Position)
+        public Tile getTile(int x, int y)
         {
-            return tileArray[Position.X, Position.Y];
+            return tileArray[x, y];
         }
          /*
         public bool canWalk(Point point)
@@ -108,5 +116,19 @@ namespace Lab5_YumnaAziz_OOP
             return(point.X>=0 && point.X<width && point)
         }
         */
+
+        public bool canWalk(int x,  int y)
+        {
+            if (x > 0 && x < width && y > 0 && y < height)
+            {
+                if (getTile(x, y).canWalk() == true)
+                {
+                    return true;
+                }
+                else return false;
+            }
+            else return false;
+                
+        }
     }
 }

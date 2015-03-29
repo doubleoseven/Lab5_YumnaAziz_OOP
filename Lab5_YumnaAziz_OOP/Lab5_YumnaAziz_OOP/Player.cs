@@ -66,7 +66,7 @@ namespace Lab5_YumnaAziz_OOP
         
         public Texture2D getPlayerImage()
         {
-            return playerImage
+            return playerImage;
         }
          //Accepts an array of tiles that were loaded from the game
         public bool canMove(Tile[,] tiles, int row, int column)
